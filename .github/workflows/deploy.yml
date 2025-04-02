@@ -19,6 +19,6 @@ jobs:
         uses: superfly/flyctl-actions/setup-flyctl@master
 
       - name: Deploy app
-        run: flyctl deploy --remote-only -a biblio.app
+        run: flyctl deploy --remote-only -a biblio-app
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
