@@ -1,22 +1,9 @@
-# Connect to SQLite
-db_path <- here("biblio-api/libraries.sqlite")
-
 # Function to fetch libraries from SQLite
 fetch_libraries <- function() {
-  # fmt: skip
-  con <- dbConnect(SQLite(), dbname = db_path, read_only = TRUE)
-  libraries <- dbReadTable(con, "libraries")
-  dbDisconnect(con)
-
-  return(libraries)
+  fromJSON("https://biblio-api.fly.dev/libraries")
 }
 
 # Function to fetch schedules from SQLite and determine the current open status
 fetch_schedules <- function() {
-  # fmt: skip
-  con <- dbConnect(SQLite(), dbname = db_path, read_only = TRUE)
-  schedules <- dbReadTable(con, "schedules")
-  dbDisconnect(con)
-
-  return(schedules)
+  fromJSON("https://biblio-api.fly.dev/libraries")
 }
