@@ -3,25 +3,27 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'biblio-app'
-primary_region = 'arn'
+app = "biblio-app"
+primary_region = "arn"
 
 [build]
 
 [env]
-  PORT = '3838'
+  PORT = "3838"
 
 [[services]]
-  protocol = 'tcp'
+  protocol = "tcp"
   internal_port = 3838
 
   [[services.ports]]
+    handlers = ["http"]
     port = 80
 
   [[services.ports]]
+    handlers = ["tls", "http"]
     port = 443
 
 [[vm]]
-  memory = '1gb'
-  cpu_kind = 'shared'
+  memory = "1gb"
+  cpu_kind = "shared"
   cpus = 1
