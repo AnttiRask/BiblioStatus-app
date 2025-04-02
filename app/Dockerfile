@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install R packages
-RUN R -e 'install.packages(c("dplyr", "here", "jsonlite", "leaflet", "purrr", "shiny", "shinyjs"), repos="https://cloud.r-project.org")'
+RUN Rscript -e 'install.packages("renv"); renv::restore()'
 
 # Copy app files
 COPY . /srv/shiny-server/
