@@ -5,5 +5,5 @@ fetch_libraries <- function() {
 
 # Function to fetch schedules from SQLite and determine the current open status
 fetch_schedules <- function() {
-  fromJSON("https://biblio-api.fly.dev/libraries")
+  fromJSON("https://biblio-api.fly.dev/schedules")
 }

@@ -3,7 +3,6 @@ library(dplyr)
 library(here)
 library(leaflet)
 library(purrr)
-library(RSQLite)
 library(shiny)
 library(shinyjs)
 
