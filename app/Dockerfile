@@ -1,5 +1,7 @@
+# Use a base Shiny image
 FROM rocker/shiny:4.3.1
 
+# Install system libraries
 RUN apt-get update && apt-get install -y \
     libcurl4-openssl-dev \
     libssl-dev \
@@ -11,20 +13,24 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libtiff5-dev \
     libjpeg-dev \
+    libgdal-dev \
+    gdal-bin \
     && rm -rf /var/lib/apt/lists/*
 
+# Set working directory
 WORKDIR /srv/shiny-server/
 
-# Copy renv setup
+# Copy R project files
 COPY renv.lock ./renv.lock
 COPY renv/ ./renv/
 
-# Install packages
+# Restore packages
 RUN Rscript -e "install.packages('renv'); renv::restore()"
 
 # Copy app files
-COPY . .
+COPY . /srv/shiny-server/
 
+# Expose port (Shiny listens on 3838)
 EXPOSE 3838
 
 CMD ["/usr/bin/shiny-server"]
