@@ -1,16 +1,19 @@
-# Load required libraries
-library(dplyr)
-library(jsonlite)
-library(leaflet)
-library(purrr)
-library(shiny)
-library(shinyjs)
-
-# Load helper functions and variables
-source("www/functions.R")
-source("www/variables.R")
-
 server <- function(input, output, session) {
+  cat("Server function started\n")
+
+  # Load required libraries
+  library(dplyr)
+  library(jsonlite)
+  library(leaflet)
+  library(purrr)
+  library(shiny)
+  library(shinyjs)
+
+  # Load helper functions and variables
+  cat("Sourcing helper files...\n")
+  source("www/functions.R")
+  source("www/variables.R")
+
   # State: reactive containers
   library_data <- reactiveVal(NULL)
   selected_library <- reactiveVal(NULL)
