@@ -1,6 +1,5 @@
 # Load required libraries
 library(dplyr)
-library(here)
 library(jsonlite)
 library(leaflet)
 library(purrr)
