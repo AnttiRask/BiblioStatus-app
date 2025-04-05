@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
-WORKDIR /srv/shiny-server/
+WORKDIR /srv/shiny-server/biblio
 
 # Copy R project files
 COPY renv.lock ./renv.lock
@@ -28,7 +28,7 @@ COPY renv/ ./renv/
 RUN Rscript -e "install.packages('renv'); renv::restore()"
 
 # Copy app files
-COPY . /srv/shiny-server/
+COPY . .
 
 # Expose port (Shiny listens on 3838)
 EXPOSE 3838
