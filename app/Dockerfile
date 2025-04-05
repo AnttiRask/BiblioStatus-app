@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libgdal-dev \
     gdal-bin \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
