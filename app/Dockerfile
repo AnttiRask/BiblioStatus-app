@@ -21,8 +21,8 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /srv/shiny-server/biblio
 
 # Copy R project files
-COPY renv.lock ../renv.lock
-COPY renv/ ../renv/
+COPY renv.lock ./renv.lock
+COPY renv/ ./renv/
 COPY biblio/ .
 
 # Restore packages
