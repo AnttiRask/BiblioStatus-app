@@ -21,14 +21,16 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /srv/shiny-server/biblio
 
 # Copy R project files
-COPY renv.lock ./renv.lock
-COPY renv/ ./renv/
-COPY biblio/ ./
+COPY renv.lock ../renv.lock
+COPY renv/ ../renv/
+COPY biblio/ .
 
 # Restore packages
 RUN Rscript -e "install.packages('renv'); renv::restore()"
 
+# Overwrite default config
+COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
+
 # Expose port (Shiny listens on 3838)
 EXPOSE 3838
-
 CMD ["/usr/bin/shiny-server"]
