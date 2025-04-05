@@ -23,12 +23,10 @@ WORKDIR /srv/shiny-server/biblio
 # Copy R project files
 COPY renv.lock ./renv.lock
 COPY renv/ ./renv/
+COPY biblio/ ./
 
 # Restore packages
 RUN Rscript -e "install.packages('renv'); renv::restore()"
-
-# Copy app files
-COPY . .
 
 # Expose port (Shiny listens on 3838)
 EXPOSE 3838
