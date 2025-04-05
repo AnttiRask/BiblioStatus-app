@@ -37,5 +37,4 @@ RUN mkdir -p /var/log/shiny-server && chown shiny:shiny /var/log/shiny-server
 
 # Expose port (Shiny listens on 3838)
 EXPOSE 3838
-# CMD ["/usr/bin/shiny-server"]
-CMD ["R", "-e", "shiny::runApp('/srv/app', host='0.0.0.0', port=3838)"]
+CMD ["/usr/bin/shiny-server"]
