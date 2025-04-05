@@ -32,6 +32,10 @@ RUN Rscript -e "install.packages('renv'); renv::restore()"
 # Overwrite default config
 COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 
+# Create the log directory with proper ownership
+RUN mkdir -p /var/log/shiny-server \
+    && chown shiny:shiny /var/log/shiny-server
+
 # Expose port (Shiny listens on 3838)
 EXPOSE 3838
 CMD ["/usr/bin/shiny-server"]
